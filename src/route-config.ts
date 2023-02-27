@@ -5,14 +5,34 @@ import EditGenre from "./screens/geners/EditGenre";
 import Actors from "./screens/actors/Actors";
 import CreateActor from "./screens/actors/CreateActor";
 import EditActor from "./screens/actors/EditActor";
+import Theaters from "./screens/theaters/Theaters";
+import CreateTheater from "./screens/theaters/CreateTheater";
+import EditTheater from "./screens/theaters/EditTheater";
+import CreateMovie from "./screens/movies/CreateMovie";
+import EditMovie from "./screens/movies/EditMovie";
+import FilterMovies from "./screens/movies/FilterMovies";
+import RedirectToHome from "./screens/Redirect/RedirectToHome";
 const routes=[
     {path:'/',element:Home},
+    
     {path:'/genres',element:Genres},
     {path:'/genres/create',element:CreateGenre},
-    {path:'/genres/edit',element:EditGenre},
+    {path:'/genres/edit/:id',element:EditGenre},
+
     {path:'/actors',element:Actors},
     {path:'/actors/create',element:CreateActor},
-    {path:'/actors/edit',element:EditActor},
+    {path:'/actors/edit/:id',element:EditActor},
+
+    {path:'/theaters',element:Theaters},
+    {path:'/theaters/create',element:CreateTheater},
+    {path:'/theaters/edit/:id',element:EditTheater},
+
+    {path:'/movies/create',element:CreateMovie},
+    {path:'/movies/edit/:id',element:EditMovie},
+    {path:'/movies/filter',element:FilterMovies},
+
+    {path:'*',element:RedirectToHome}
+
 
 
 ]
