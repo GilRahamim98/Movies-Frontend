@@ -1,7 +1,11 @@
 import { useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import './App.css';
+import Menu from './components/Menu/Menu';
 import MoviesList from './components/MoviesList/MoviesList';
 import { landingPageDTO } from './models/movies.model';
+import Genres from './screens/geners/Genres';
+import Home from './screens/home/Home';
 
 function App() {
 
@@ -70,17 +74,26 @@ function App() {
   })
 
   return (
-    <div className='container'>
-      <h3 dir='rtl'>הקולנוע הישראלי</h3>
-      <MoviesList movies={movies.moviesList} />
 
-      <h3 dir='rtl'>עכשיו בקולנוע</h3>
-      <MoviesList movies={movies.inTheaters} />
+    <BrowserRouter>
+      <Menu />
+      <div className='container'>
+        <Routes>
+          <Route path='/' element={<Home moviesList={movies.moviesList} inTheaters={movies.inTheaters} />} />
+
+          <Route path='/genres' element={<Genres />} />
 
 
 
 
-    </div>
+        </Routes>
+
+
+      </div>
+    </BrowserRouter>
+
+
+
   );
 }
 
