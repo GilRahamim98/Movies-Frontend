@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import Loader from "../Loader/Loader";
+import Loader from "../loader/Loader";
 
 export default function GenericeList(props: genericListProps) {
     if (!props.list) {

@@ -11,7 +11,7 @@ import EditTheater from "./screens/theaters/EditTheater";
 import CreateMovie from "./screens/movies/CreateMovie";
 import EditMovie from "./screens/movies/EditMovie";
 import FilterMovies from "./screens/movies/FilterMovies";
-import RedirectToHome from "./screens/Redirect/RedirectToHome";
+import RedirectToHome from "./screens/redirect/RedirectToHome";
 const routes=[
     {path:'/',element:Home},
     

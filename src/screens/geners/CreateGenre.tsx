@@ -1,17 +1,17 @@
-import { useNavigate } from "react-router-dom";
-import Button from "../../components/Button/Button";
+import GenreForm from "./GenreForm";
 
 export default function CreateGenre(){
-    const navigate=useNavigate()
     return (
         <div dir='rtl'>
             <h3 dir="rtl">יצירת ז'אנר</h3>
-            <Button onClick={()=>{
-                //save in database
-                navigate('/genres')
+            <GenreForm model={{name:''}} 
+                onSubmit={async value=>{
+                          await new Promise(r=>setTimeout(r,1))
+                          console.log(value)
+                        }}
+            />
 
-
-            }}>שמור שינויים</Button>
+            
         </div>
     )
 }
