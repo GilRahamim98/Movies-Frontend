@@ -1,7 +1,7 @@
-import Genres from "./screens/geners/Genres";
+import Genres from "./screens/genres/Genres";
 import Home from "./screens/home/Home";
-import CreateGenre from "./screens/geners/CreateGenre";
-import EditGenre from "./screens/geners/EditGenre";
+import CreateGenre from "./screens/genres/CreateGenre";
+import EditGenre from "./screens/genres/EditGenre";
 import Actors from "./screens/actors/Actors";
 import CreateActor from "./screens/actors/CreateActor";
 import EditActor from "./screens/actors/EditActor";
@@ -11,7 +11,7 @@ import EditTheater from "./screens/theaters/EditTheater";
 import CreateMovie from "./screens/movies/CreateMovie";
 import EditMovie from "./screens/movies/EditMovie";
 import FilterMovies from "./screens/movies/FilterMovies";
-import RedirectToHome from "./screens/Redirect/RedirectToHome";
+import RedirectToHome from "./screens/redirect/RedirectToHome";
 const routes=[
     {path:'/',element:Home},
     

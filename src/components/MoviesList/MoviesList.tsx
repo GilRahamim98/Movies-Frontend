@@ -1,7 +1,7 @@
 import { movieDTO } from "../../models/movies.model"
-import IndividualMovie from "../IndividualMovie/IndividualMovie"
+import IndividualMovie from "../individualMovie/IndividualMovie"
 import css from './MoviesList.module.css'
-import GenericeList from "../GenericList/GenericeList"
+import GenericeList from "../genericList/GenericeList"
 export default function MoviesList(props: moviesListProps) {
     return (
         <GenericeList list={props.movies}>

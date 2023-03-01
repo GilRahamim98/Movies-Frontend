@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import MoviesList from '../../components/MoviesList/MoviesList';
+import MoviesList from '../../components/moviesList/MoviesList';
 import { landingPageDTO } from "../../models/movies.model"
 
 export default function Home() {
