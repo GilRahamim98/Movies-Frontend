@@ -5,6 +5,8 @@ import Button from "../../components/button/Button";
 import { Link } from "react-router-dom";
 import * as Yup from 'yup'
 import DateField from "../../components/forms/DateField";
+import ImageField from "../../components/forms/ImageField";
+import MarkdownField from "../../components/forms/MarkdownField";
 
 export default function ActorForm(props:actorFormProps){
     return(
@@ -20,6 +22,8 @@ export default function ActorForm(props:actorFormProps){
                 <Form>
                     <TextField hebrewField=" שם השחקן" field="name"/>
                     <DateField hebrewField="תאריך לידה" field="dateOfBirth"/>
+                    <ImageField hebrewField="תמונה" field="picture" imageUrl={props.model.pictureUrl} />
+                    <MarkdownField hebrewField="ביוגרפיה" field="biography"/>
                     <Link to='/actors' className="btn btn-outline-secondary">בטל</Link>
                     <Button disabled={formikProps.isSubmitting} type="submit">שמור שינויים</Button>
                 </Form>
