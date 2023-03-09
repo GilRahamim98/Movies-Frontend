@@ -10,7 +10,7 @@ export default function GenreForm(props:genreFormProps){
         <Formik initialValues={props.model}
         onSubmit={props.onSubmit}
         validationSchema={Yup.object({
-            name:Yup.string().required('זהו שדה חובה!')
+            name:Yup.string().required('זהו שדה חובה!').max(50,"שם הז'אנר יכול להיות עד 50 תווים.")
         })}
         >
             {(formikProps)=>(
