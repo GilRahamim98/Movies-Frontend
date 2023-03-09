@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { ReactElement } from "react-markdown/lib/react-markdown";
 import { Link } from "react-router-dom";
 import Button from "../button/Button";
-import customConfirm from "../customConfirm/CustomConfirm";
+import customConfirm from "../../utils/CustomConfirm";
 import GenericeList from "../genericList/GenericeList";
 import Pagination from "../pagination/Pagination";
 import RecordsPerPageSelect from "../recordsPerPage/RecordsPerPageSelect";
