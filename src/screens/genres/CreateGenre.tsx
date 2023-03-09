@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import DisplayErros from "../../components/erros/DisplayErros";
+import DisplayErrors from "../../components/errors/DisplayErros";
 import { urlGenres } from "../../endpoints";
 import { genreCreationDTO } from "../../models/genres.model";
 import GenreForm from "./GenreForm";
@@ -24,7 +24,7 @@ export default function CreateGenre(){
     return (
         <div dir='rtl'>
             <h3 dir="rtl">יצירת ז'אנר</h3>
-            <DisplayErros errors={errors}/>
+            <DisplayErrors errors={errors}/>
             <GenreForm model={{name:''}} 
                 onSubmit={async value=>{
                           await create(value);

@@ -1,4 +1,4 @@
-export default function DisplayErros(props:displayErrorsProps){
+export default function DisplayErrors(props:displayErrorsProps){
     const style={color:'red'}
     return(
         <>
