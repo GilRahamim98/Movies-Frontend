@@ -1,4 +1,5 @@
 import { actorCreationDTO } from "../models/actors.model";
+import { movieCreationDTO } from "../models/movies.model";
 
 export  function convertActorToFormData(actor:actorCreationDTO):FormData{
     const formData=new FormData();
@@ -18,6 +19,29 @@ export  function convertActorToFormData(actor:actorCreationDTO):FormData{
 
     }
 
+    return formData;
+
+}
+
+export function converMovieToFormData(movie:movieCreationDTO):FormData{
+    const formData=new FormData();
+    formData.append('title',movie.title);
+    if(movie.summary){
+        formData.append('summary',movie.summary);
+    }
+
+    formData.append('trailer',movie.trailer);
+    formData.append('inTheaters',String(movie.inTheateres));
+    if(movie.releaseDate){
+        formData.append('releaseDate',formatDate(movie.releaseDate));
+    }
+    if(movie.poster){
+        formData.append('poster',movie.poster);
+    }
+    formData.append('genresIds',JSON.stringify(movie.genresIds))
+    formData.append('theatersIds',JSON.stringify(movie.theatersIds))
+    formData.append('actors',JSON.stringify(movie.actors))
+    
     return formData;
 
 }

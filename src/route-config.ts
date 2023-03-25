@@ -12,6 +12,7 @@ import CreateMovie from "./screens/movies/CreateMovie";
 import EditMovie from "./screens/movies/EditMovie";
 import FilterMovies from "./screens/movies/FilterMovies";
 import RedirectToHome from "./screens/redirect/RedirectToHome";
+import MovieDetails from "./screens/movies/MovieDetails";
 const routes=[
     {path:'/',element:Home},
     
@@ -30,6 +31,8 @@ const routes=[
     {path:'/movies/create',element:CreateMovie},
     {path:'/movies/edit/:id',element:EditMovie},
     {path:'/movies/filter',element:FilterMovies},
+    {path:'/movies/:id',element:MovieDetails},
+
 
     {path:'*',element:RedirectToHome}
 
