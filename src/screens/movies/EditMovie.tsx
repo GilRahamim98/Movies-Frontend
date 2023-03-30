@@ -1,39 +1,71 @@
 import MovieForm from "./MovieForm";
-import { genreDTO } from "../../models/genres.model";
-import { theaterDTO } from "../../models/theaters.model";
-import { actorMovieDTO } from "../../models/actors.model";
+import { useEffect, useState } from "react";
+import axios, { AxiosResponse } from "axios";
+import { urlMovies } from "../../endpoints";
+import { useNavigate, useParams } from "react-router-dom";
+import { movieCreationDTO, moviePutGetDTO } from "../../models/movies.model";
+import { convertMovieToFormData } from "../../utils/FormDataUtils";
+import DisplayErrors from "../../components/errors/DisplayErros";
+import Loader from "../../components/loader/Loader";
 
-export default function EditMovie(){
-    const nonSelectedGenres:genreDTO[]=[{id:2,name:"אקשן"}]
-    const selectedGenres:genreDTO[]=[{id:1,name:"דרמה"}]
-    const nonSelectedTheaters:theaterDTO[]=[{id:2,name:"סינמה סיטי"}]
-    const selectedTheaters:theaterDTO[]=[{id:1,name:"יס פלאנט"}]
+export default function EditMovie() {
+  const navigate = useNavigate();
+  const { id }: any = useParams();
+  const [movie, setMovie] = useState<movieCreationDTO>();
+  const [moviePutGet, setMoviePutGet] = useState<moviePutGetDTO>();
+  const [errors, setErrors] = useState<string[]>([]);
 
-    const selectedActors:actorMovieDTO[]=[ {
-        id:2, name:'אבי קושניר',character:'מומו',picture:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyZZ-Khww9e-Squip_1AZYLik17Oht0BSachn9hTrUDyPkn6RE4YM_&s=0'
-    }]
+  useEffect(() => {
+    axios
+      .get(`${urlMovies}/PutGet/${id}`)
+      .then((response: AxiosResponse<moviePutGetDTO>) => {
+        const model: movieCreationDTO = {
+          title: response.data.movie.title,
+          inTheaters: response.data.movie.inTheaters,
+          trailer: response.data.movie.trailer,
+          posterURL: response.data.movie.poster,
+          summary: response.data.movie.summary,
+          releaseDate: new Date(response.data.movie.releaseDate),
+        };
+        setMovie(model);
+        setMoviePutGet(response.data);
+      });
+  }, [id]);
 
+  async function edit(movieToEdit: movieCreationDTO) {
+    try {
+      const formData = convertMovieToFormData(movieToEdit);
 
-    return (
-        <div dir="rtl">
-            <h3 dir="rtl">עריכת סרט</h3>
-            <MovieForm 
-            model={
-                {
-                    title:'אלכס חולה אהבה',
-                    inTheateres:false,
-                    trailer:'קישור לסרט',
-                    releaseDate:new Date('1986-01-01T00:00:00'),
-                    posterURL:'https://upload.wikimedia.org/wikipedia/he/d/d1/%D7%90%D7%9C%D7%9B%D7%A1_%D7%97%D7%95%D7%9C%D7%94_%D7%90%D7%94%D7%91%D7%94_%D7%9B%D7%A8%D7%96%D7%94_%D7%A7%D7%95%D7%9C%D7%A0%D7%95%D7%A2%D7%99%D7%AA.JPG'
-                }
-            } 
-            onSubmit={values=>console.log(values)}
-            nonSelectedGenres={nonSelectedGenres}
-            selectedGenres={selectedGenres}
-            nonSelectedTheaters={nonSelectedTheaters}
-            selectedTheaters={selectedTheaters}
-            selectedActors={selectedActors}
-            />
-        </div>
-    )
+      await axios({
+        method: "put",
+        url: `${urlMovies}/${id}`,
+        data: formData,
+        headers: { "Content-Type": "multipart/form-data" },
+      });
+
+      navigate(`/movies/${id}`);
+    } catch (error: any) {
+      setErrors(error);
+    }
+  }
+
+  return (
+    <div dir="rtl">
+      <h3 dir="rtl">עריכת סרט</h3>
+      <DisplayErrors errors={errors} />
+      {movie && moviePutGet ? (
+        <MovieForm
+          model={movie}
+          onSubmit={async (values) => await edit(values)}
+          nonSelectedGenres={moviePutGet.nonSelectedGenres}
+          selectedGenres={moviePutGet.selectedGenres}
+          nonSelectedTheaters={moviePutGet.nonSelectedTheaters}
+          selectedTheaters={moviePutGet.selectedTheaters}
+          selectedActors={moviePutGet.actors}
+        />
+      ) : (
+        <Loader />
+      )}
+    </div>
+  );
 }

@@ -1,11 +1,36 @@
-import { Link } from "react-router-dom";
+import IndexEntity from "../../components/entity/IndexEntity";
+import { urlActors } from "../../endpoints";
+import { actorDTO } from "../../models/actors.model";
 
 export default function Actors() {
     return (
         <div dir="rtl">
-            <h2 dir="rtl">שחקנים</h2>
-            <Link className="btn btn-dark" to='/actors/create' dir="rtl">יצירת שחקן</Link>
+            <IndexEntity<actorDTO> url={urlActors} createURL='/actors/create' title="שחקנים" entityName="שחקן">
+                    {(actors,buttons)=><>
+                        <thead>
+                        <tr>
+                            <th>שם</th>
+                            <th></th>
+                            <th></th>
 
+                        </tr>
+                        
+                    </thead>
+                    <tbody>
+                        {actors?.map(actor=>
+                            <tr key={actor.id}>
+                                <td>
+                                    {actor.name}
+                                </td>
+                                {buttons(`/actors/edit/${actor.id}`,actor.id)}
+                            
+
+
+                            </tr>)}
+                    </tbody>
+                    </>}
+            </IndexEntity>
+            
         </div>
     )
 

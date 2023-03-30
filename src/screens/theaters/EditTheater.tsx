@@ -1,15 +1,16 @@
 import TheaterForm from "./TheaterForm"
+import EditEntity from "../../components/entity/EditEntity";
+import { urlTheaters } from "../../endpoints";
+import { theaterCreationDTO, theaterDTO } from "../../models/theaters.model";
 
 export default function EditTheater(){
     return (
-        <div dir="rtl">
-            <h3 dir="rtl">עריכת בית קולנוע</h3>
-            <TheaterForm model={{name:'יס פלאנט',latitude: 31.97966193035062, longitude: 34.74773615598679}} 
-                onSubmit={async value=>{
-                          await new Promise(r=>setTimeout(r,1))
-                          console.log(value)
-                        }}
-            />
-        </div>
+        <>
+        <EditEntity<theaterCreationDTO,theaterDTO> url={urlTheaters} entityName="בית קולנוע" indexURL="/theaters">
+            {(entity,edit)=>
+            <TheaterForm model={entity} onSubmit={async value=>{await edit(value)}}/>}
+        </EditEntity>
+        </>
     )
 }
+

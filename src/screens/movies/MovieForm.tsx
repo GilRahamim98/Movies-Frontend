@@ -13,6 +13,7 @@ import { genreDTO } from "../../models/genres.model";
 import { theaterDTO } from "../../models/theaters.model";
 import TypeAheadActors from "../../components/forms/TypeAheadActors";
 import { actorMovieDTO } from "../../models/actors.model";
+import MarkdownField from "../../components/forms/MarkdownField";
 
 export default function MovieForm(props:movieFormProps){
     const[selectedGenres,setSelectedGenres]=useState(mapToModel(props.selectedGenres));
@@ -48,6 +49,7 @@ export default function MovieForm(props:movieFormProps){
                 <TextField field="trailer" hebrewField="טריילר"/>
                 <DateField hebrewField="תאריך יציאה לקרנים" field="releaseDate"/>
                 <ImageField hebrewField="פוסטר" field="poster" imageUrl={props.model.posterURL}/>
+                <MarkdownField hebrewField="תקציר" field="summary"/>
                 <MultipleSelector hebrewField="ז'אנרים" nonSelected={nonSelectedGenres} selected={selectedGenres} 
                 onChange={(selected,nonSelected)=>{
                     setSelectedGenres(selected)
