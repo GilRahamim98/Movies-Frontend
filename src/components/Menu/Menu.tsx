@@ -13,7 +13,7 @@ export default function Menu() {
                         </li>
                         <li className="nav-item" dir="rtl">
                             <NavLink className="nav-link" to="/movies/filter" dir="rtl">
-                                סרטים
+                                חיפוש סרטים
                             </NavLink>
                         </li>
         
