@@ -1,5 +1,6 @@
 export default function DisplayErrors(props:displayErrorsProps){
     const style={color:'red'}
+    
     return(
         <>
         {props.errors?<ul style={style}>

@@ -6,7 +6,7 @@ export interface movieDTO{
     id:number;
     title:string;
     poster:string;
-    inTheateres:boolean;
+    inTheaters:boolean;
     trailer:string;
     summary?:string;
     releaseDate:Date;
@@ -17,7 +17,7 @@ export interface movieDTO{
 
 export interface movieCreationDTO{
     title:string;
-    inTheateres:boolean;
+    inTheaters:boolean;
     trailer:string;
     summary?:string;
     releaseDate?:Date;
@@ -36,4 +36,13 @@ export interface landingPageDTO{
 export interface moviesPostGetDTO{
     genres:genreDTO[];
     theaters:theaterDTO[];
+}
+
+export interface moviePutGetDTO{
+    movie:movieDTO;
+    selectedGenres:genreDTO[];
+    nonSelectedGenres:genreDTO[];
+    selectedTheaters:theaterDTO[];
+    nonSelectedTheaters:theaterDTO[];
+    actors:actorMovieDTO[];
 }

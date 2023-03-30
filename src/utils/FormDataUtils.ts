@@ -23,15 +23,16 @@ export  function convertActorToFormData(actor:actorCreationDTO):FormData{
 
 }
 
-export function converMovieToFormData(movie:movieCreationDTO):FormData{
+export function convertMovieToFormData(movie:movieCreationDTO):FormData{
     const formData=new FormData();
+
     formData.append('title',movie.title);
     if(movie.summary){
         formData.append('summary',movie.summary);
     }
 
     formData.append('trailer',movie.trailer);
-    formData.append('inTheaters',String(movie.inTheateres));
+    formData.append('inTheaters',String(movie.inTheaters));
     if(movie.releaseDate){
         formData.append('releaseDate',formatDate(movie.releaseDate));
     }
@@ -41,6 +42,8 @@ export function converMovieToFormData(movie:movieCreationDTO):FormData{
     formData.append('genresIds',JSON.stringify(movie.genresIds))
     formData.append('theatersIds',JSON.stringify(movie.theatersIds))
     formData.append('actors',JSON.stringify(movie.actors))
+   
+    
     
     return formData;
 
@@ -57,3 +60,4 @@ function formatDate(date:Date){
     const [{value:month},,{value:day},,{value:year}]=format.formatToParts(date);
     return `${year}-${month}-${day}`
 }
+

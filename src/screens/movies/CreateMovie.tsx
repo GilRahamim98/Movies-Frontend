@@ -7,7 +7,7 @@ import { urlMovies } from "../../endpoints";
 import { genreDTO } from "../../models/genres.model";
 import { movieCreationDTO, moviesPostGetDTO } from "../../models/movies.model";
 import { theaterDTO } from "../../models/theaters.model";
-import { converMovieToFormData } from "../../utils/FormDataUtils";
+import { convertMovieToFormData } from "../../utils/FormDataUtils";
 import MovieForm from "./MovieForm";
 
 export default function CreateMovie(){
@@ -30,7 +30,8 @@ export default function CreateMovie(){
 
    async function create(movie:movieCreationDTO) {
     try{
-        const formData=converMovieToFormData(movie);
+        const formData=convertMovieToFormData(movie);
+        
         const response=await axios({
             method:'post',
             url:urlMovies,
@@ -51,7 +52,7 @@ export default function CreateMovie(){
             <DisplayErrors errors={errors}/>
             {loading? <Loader/>:
             <MovieForm 
-            model={{title:'',inTheateres:false,trailer:'',posterURL:''}} 
+            model={{title:'',inTheaters:false,trailer:'',posterURL:''}} 
             onSubmit={async values=>await create(values)}
             nonSelectedGenres={nonSelectedGenres}
             selectedGenres={[]}
