@@ -5,7 +5,7 @@ import { urlMovies } from "../../endpoints";
 import { useNavigate, useParams } from "react-router-dom";
 import { movieCreationDTO, moviePutGetDTO } from "../../models/movies.model";
 import { convertMovieToFormData } from "../../utils/FormDataUtils";
-import DisplayErrors from "../../components/errors/DisplayErros";
+import DisplayErrors from "../../components/errors/DisplayErrors";
 import Loader from "../../components/loader/Loader";
 
 export default function EditMovie() {

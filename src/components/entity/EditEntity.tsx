@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from "axios";
 import { useState, useEffect } from "react";
 import Loader from "../loader/Loader";
 import { useNavigate, useParams } from "react-router-dom";
-import DisplayErrors from "../errors/DisplayErros";
+import DisplayErrors from "../errors/DisplayErrors";
 import { ReactElement } from "react-markdown/lib/react-markdown";
 
 export default function EditEntity<TCreation,TRead>(props:editEntityProps<TCreation,TRead>){

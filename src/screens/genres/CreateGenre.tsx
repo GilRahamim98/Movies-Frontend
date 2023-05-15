@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import DisplayErrors from "../../components/errors/DisplayErros";
+import DisplayErrors from "../../components/errors/DisplayErrors";
 import { urlGenres } from "../../endpoints";
 import { genreCreationDTO } from "../../models/genres.model";
 import GenreForm from "./GenreForm";

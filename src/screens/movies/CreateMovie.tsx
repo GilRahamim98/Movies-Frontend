@@ -1,7 +1,7 @@
 import axios, { AxiosResponse } from "axios";
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import DisplayErrors from "../../components/errors/DisplayErros";
+import DisplayErrors from "../../components/errors/DisplayErrors";
 import Loader from "../../components/loader/Loader";
 import { urlMovies } from "../../endpoints";
 import { genreDTO } from "../../models/genres.model";
