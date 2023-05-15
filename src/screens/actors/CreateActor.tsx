@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { actorCreationDTO } from "../../models/actors.model";
 import ActorForm from "./ActorForm";
-import DisplayErrors from "../../components/errors/DisplayErros";
+import DisplayErrors from "../../components/errors/DisplayErrors";
 import { convertActorToFormData } from "../../utils/FormDataUtils";
 import { urlActors } from "../../endpoints";
 

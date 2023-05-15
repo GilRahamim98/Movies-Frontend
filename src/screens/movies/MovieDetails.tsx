@@ -3,11 +3,13 @@ import axios,{ AxiosResponse } from "axios"
 import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import Loader from "../../components/loader/Loader"
-import { urlMovies } from "../../endpoints"
+import { urlMovies, urlRatings } from "../../endpoints"
 import { movieDTO } from "../../models/movies.model"
 import { ReactMarkdown } from "react-markdown/lib/react-markdown"
 import { coordinateDTO } from "../../models/coordinates.model"
 import Map from "../../components/map/Map"
+import Ratings from "../../components/rating/Ratings"
+import Swal from "sweetalert2"
 
 export default function MovieDetails(){
     const {id}:any=useParams()
@@ -42,6 +44,11 @@ export default function MovieDetails(){
         }
         return `https://www.youtube.com/embed/${videoId}`;   
     }
+    function handleRate(rate:number){
+        axios.post(urlRatings,{rating:rate,movieId:id}).then(()=>{
+            Swal.fire({icon:'success',title:'הדירוג נקלט בהצלחה!'})
+        })
+    }
     return(
         movie?<div dir="rtl">
             <h2>{movie.title} ({movie.releaseDate.getFullYear()})</h2>
@@ -51,6 +58,8 @@ export default function MovieDetails(){
                       className="btn btn-primary btn-sm rounded-pill" 
                       to={`/movies/filter?genreId=${genre.id}`}>{genre.name}</Link>
                 )} |{movie.releaseDate.toLocaleDateString()}
+                   | הדירוג שלך: <Ratings maximumValue={5} selectedValue={movie.userVote} onChange={handleRate}/>
+                   | דירוג ממוצע:{movie.averageVote}
 
                 <div  style={{display:'flex',marginTop:'1rem'}}>
                     <span style={{display:'inline-block',marginRight:'1rem'}}>
